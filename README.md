@@ -42,11 +42,11 @@
 
     -   [ECT Tech Nugget N4.0 VyOS and GNS3 Part 1](https://youtu.be/POqlACy94ys), [ECT Tech Nugget N4.0 VyOS and GNS3 Part 2](https://youtu.be/xtt3UO4gW7A)
 
--   VyOS User Guide - <https://docs.vyos.io/en/latest/index.html>
+-   VyOS User Guide - <https://docs.vyos.io/en/equuleus/index.html>
 
--   VyOS Ethernet Configuration - <https://docs.vyos.io/en/latest/interfaces/ethernet.html>
+-   VyOS Ethernet Configuration - <https://docs.vyos.io/en/equuleus/configuration/interfaces/ethernet.html>
 
--   VyOS Static Routing - <https://docs.vyos.io/en/latest/routing/static.html>
+-   VyOS Static Routing - <https://docs.vyos.io/en/equuleus/configuration/protocols/static.html>
 
 ### Lab Troubleshooting
 
