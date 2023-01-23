@@ -161,8 +161,8 @@ sudo nmcli con mod "Wired connection" 1 ipv4.dns 132.235.9.75
 sudo nmcli connection down "Wired connection 1"
 sudo nmcli connection up "Wired connection 1"
 ```
-> Q = Gateway IP
-> Y = Network Number
+Q = Gateway IP
+Y = Network Number
 
 25. Make sure all GNS3 objects CAN ping their gateway.
 
