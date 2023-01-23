@@ -75,6 +75,7 @@ You **[will]** run into issues with the router configuration going through this 
 WAN eth0 Example:
 
 ```
+set system host-name VyOS-1
 set interfaces ethernet eth0 address 132.235.160.X/26
 set interfaces ethernet eth0 description WAN
 ```
@@ -120,13 +121,15 @@ set system name-server 132.235.200.41
 
 14. From VPCS-1 console use the following syntax to configure VPCS with static IP.
 
+```
 ip 100.70.Y.A/26 100.70.KKK.B
+```
 
 Y = IP address chosen for VPCS
 
 B = IP address for gateway (VyOS-1 eth1)
 
-15. From VPCS-1 console test connection to gateway by running: ``` ping 100.70.KKK.B```
+15. From VPCS-1 console test connection to gateway by running: ```ping 100.70.KKK.B```
 
 16. From Linux GUI setup the NIC. Click on the Connection Manager Icon ![](./images/image1.png) in the upper right corner of the screen. The "Network Connections" dialog will appear giving options
     to configure ethernet interfaces (even disabled ones) on the machine. To edit the Ethernet (ens3) interface find the "Wired Settings" menu option. This will open the network settings options. Next to Ethernet (ens3) there are two options. A slider to turn the NIC off/on and a gear icon ![](./images/image2.png). Select the gear to edit additional settings of the NIC. Select IPv4 from the menu options across the top.
