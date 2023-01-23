@@ -27,7 +27,11 @@
 
 ### Pre-Lab
 
--   Complete Subnetting Documentation and Network Diagram at end of Lab Writeup
+-   Complete Subnetting Documentation and Network Diagram at end of Lab Writeup.  Use the following IP networks assignments
+    - WAN   - 132.235.160.192/26
+    - LAN 1 - 100.70.KKK.0/26
+    - LAN 2 - 100.70.KKK.64/26
+    - LAN 3 - 100.70.KKK.254/28
 
 -   Tech Nuggets to be reviewed:
 
@@ -83,7 +87,7 @@ set interfaces ethernet eth1 description LAN1
 LAN eth2 Example:
 ```
 set interfaces ethernet eth2 address 100.70.KKK.254/28
-set interfaces ethernet eth2 description IntraNet
+set interfaces ethernet eth2 description LAN3
 ```
 6.  The default route will also need to be configured. This only needs
     to be done **[once per router]**.
