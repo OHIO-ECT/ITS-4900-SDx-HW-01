@@ -109,7 +109,10 @@ set system name-server 132.235.200.41
 
 ### VyOS-2 Router Configuration - Branch Office
 
-10. Using the VyOS-2 console use ***similar*** steps from above and data from the prelab configure VyOS-2 eth1, eth2. Set default route to the IP of VyOS-1 eth2.
+10. Using the VyOS-2 console use ***similar*** steps from above and data from the prelab configure VyOS-2 eth1, eth2. 
+
+12. Set default route to the IP of VyOS-1 eth2.
+13. Set a return route on (BRANDON IS WORKING HERE)
 
 11. From VyOS-2 console ping VyOS-1's eth2 IP.
 
