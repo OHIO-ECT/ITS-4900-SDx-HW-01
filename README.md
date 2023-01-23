@@ -23,15 +23,15 @@
 
 -   On Blackboard each student has been issued a single static address in 132.235.160.192/26 network. Gateway follows class convention (ens192). **XXX** = Your personal 132.235.160.**XXX**/26 IP address.
 
--   On Blackboard each student has been issued a (Pseudo-Public) network of 100.70.**KKK**.0/24. This network is routed to the 132.235.160.XXX address (ens192). **KKK** = assigned student number.
+-   On Blackboard each student has been issued a (Pseudo-Public) network of 100.70.**MMM**.0/24. This network is routed to the 132.235.160.XXX address (ens192). **MMM** = assigned student number.
 
 ### Pre-Lab
 
 -   Complete Subnetting Documentation and Network Diagram at end of Lab Writeup.  Use the following IP networks assignments
     - WAN   - 132.235.160.192/26
-    - LAN 1 - 100.70.KKK.0/26
-    - LAN 2 - 100.70.KKK.64/26
-    - LAN 3 - 100.70.KKK.254/28
+    - LAN 1 - 100.70.MMM.0/26
+    - LAN 2 - 100.70.MMM.64/26
+    - LAN 3 - 100.70.MMM.254/28
 
 -   Tech Nuggets to be reviewed:
 
@@ -76,18 +76,18 @@ WAN eth0 Example:
 
 ```
 set system host-name VyOS-1
-set interfaces ethernet eth0 address 132.235.160.X/26
+set interfaces ethernet eth0 address 132.235.160.XXX/26
 set interfaces ethernet eth0 description WAN
 ```
 
 LAN eth1 Example:
 ```
-set interfaces ethernet eth1 address 100.70.KKK.62/26
+set interfaces ethernet eth1 address 100.70.MMM.62/26
 set interfaces ethernet eth1 description LAN1
 ```
 LAN eth2 Example:
 ```
-set interfaces ethernet eth2 address 100.70.KKK.254/28
+set interfaces ethernet eth2 address 100.70.MMM.254/28
 set interfaces ethernet eth2 description LAN3
 ```
 6.  The default route will also need to be configured. This only needs
@@ -115,21 +115,21 @@ set system name-server 132.235.200.41
 
 12. From VyOS-2 console ping www.ohio.edu
 
-13. From VyOS-2 console SSH to VyOS-1 eth1 IP (Syntax: ssh itsclass@X.X.X.X). Login with the usual username/PW. It is common to SSH into physical or virtual machines (esp. routers) this way.
+13. From VyOS-2 console SSH to VyOS-1 eth1 IP (Syntax: ```ssh itsclass@x.x.x.x```). Login with the usual username/PW. It is common to SSH into physical or virtual machines (esp. routers) this way.
 
 ### Client Config
 
 14. From VPCS-1 console use the following syntax to configure VPCS with static IP.
 
 ```
-ip 100.70.Y.A/26 100.70.KKK.B
+ip 100.70.MMM.A/26 100.70.MMM.B
 ```
 
-Y = IP address chosen for VPCS
+A = IP address chosen for VPCS
 
 B = IP address for gateway (VyOS-1 eth1)
 
-15. From VPCS-1 console test connection to gateway by running: ```ping 100.70.KKK.B```
+15. From VPCS-1 console test connection to gateway by running: ```ping 100.70.MMM.B```
 
 16. From Linux GUI setup the NIC. Click on the Connection Manager Icon ![](./images/image1.png) in the upper right corner of the screen. The "Network Connections" dialog will appear giving options
     to configure ethernet interfaces (even disabled ones) on the machine. To edit the Ethernet (ens3) interface find the "Wired Settings" menu option. This will open the network settings options. Next to Ethernet (ens3) there are two options. A slider to turn the NIC off/on and a gear icon ![](./images/image2.png). Select the gear to edit additional settings of the NIC. Select IPv4 from the menu options across the top.
@@ -138,7 +138,7 @@ B = IP address for gateway (VyOS-1 eth1)
 
 17. In Ubuntu-GUI the settings will not be applied until the NIC is turned off and then back on. In the GUI turn the slider (light switch looking thing) to Off and then back to On. Reboot will work too but takes longer.
 
-18. In Linux GUI test connection to gateway by running: ```ping 100.70.KKK.B```
+18. In Linux GUI test connection to gateway by running: ```ping 100.70.MMM.B```
 
 19. Switch to Windows machine. Opening network settings is usually done by getting into the setting page. An icon has been added to the desktop of the Windows machine for quicker access. Open the "Network" icon from the desktop.
 
@@ -155,8 +155,8 @@ Example:
 ```
 sudo nmcli general hostname **<PICK A HOSTNAME>**
 sudo nmcli con mod "Wired connection 1" ipv4.method manual
-sudo nmcli con mod "Wired connection" 1 ipv4.addresses 100.70.KKK.Y/26
-sudo nmcli con mod "Wired connection" 1 ipv4.gateway 100.70.KKK.Q
+sudo nmcli con mod "Wired connection" 1 ipv4.addresses 100.70.MMM.Y/26
+sudo nmcli con mod "Wired connection" 1 ipv4.gateway 100.70.MMM.Q
 sudo nmcli con mod "Wired connection" 1 ipv4.dns 132.235.9.75
 sudo nmcli connection down "Wired connection 1"
 sudo nmcli connection up "Wired connection 1"
@@ -184,7 +184,7 @@ set protocols static route [<Network Number for> LAN2>]/[<Mask for LAN2>] next-h
 ```
 Example:
 ```
-set protocols static route 100.70.KKK.Z/26 next-hop 100.70.KKK.Y
+set protocols static route 100.70.MMM.Z/26 next-hop 100.70.MMM.Y
 ```
 > Y = IP address chosen for VyOS-2 eth2
 > Z = Network Number for LAN2
