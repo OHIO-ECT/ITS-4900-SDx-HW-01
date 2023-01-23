@@ -111,18 +111,19 @@ set system name-server 132.235.200.41
 
 10. Using the VyOS-2 console use ***similar*** steps from above and data from the prelab configure VyOS-2 eth1, eth2. 
 
-12. Set default route to the IP of VyOS-1 eth2.
-13. Set a return route on (BRANDON IS WORKING HERE)
+12. Implement a default route on VyOS-2 to the IP of VyOS-1 eth2.
 
-11. From VyOS-2 console ping VyOS-1's eth2 IP.
+13. Implement a return route on VyOS-1 to the IP of VyOS-2 eth2.
 
-12. From VyOS-2 console ping www.ohio.edu
+14. From VyOS-2 console ping VyOS-1's eth2 IP.
 
-13. From VyOS-2 console SSH to VyOS-1 eth1 IP (Syntax: ```ssh itsclass@x.x.x.x```). Login with the usual username/PW. It is common to SSH into physical or virtual machines (esp. routers) this way.
+15. From VyOS-2 console ping www.ohio.edu
+
+16. From VyOS-2 console SSH to VyOS-1 eth1 IP (Syntax: ```ssh itsclass@x.x.x.x```). Login with the usual username/PW. It is common to SSH into physical or virtual machines (esp. routers) this way.
 
 ### Client Config
 
-14. From VPCS-1 console use the following syntax to configure VPCS with static IP.
+17. From VPCS-1 console use the following syntax to configure VPCS with static IP.
 
 ```
 ip 100.70.MMM.A/26 100.70.MMM.B
@@ -132,28 +133,28 @@ A = IP address chosen for VPCS
 
 B = IP address for gateway (VyOS-1 eth1)
 
-15. From VPCS-1 console test connection to gateway by running: ```ping 100.70.MMM.B```
+18. From VPCS-1 console test connection to gateway by running: ```ping 100.70.MMM.B```
 
-16. From Linux GUI setup the NIC. Click on the Connection Manager Icon ![](./images/image1.png) in the upper right corner of the screen. The "Network Connections" dialog will appear giving options
+19. From Linux GUI setup the NIC. Click on the Connection Manager Icon ![](./images/image1.png) in the upper right corner of the screen. The "Network Connections" dialog will appear giving options
     to configure ethernet interfaces (even disabled ones) on the machine. To edit the Ethernet (ens3) interface find the "Wired Settings" menu option. This will open the network settings options. Next to Ethernet (ens3) there are two options. A slider to turn the NIC off/on and a gear icon ![](./images/image2.png). Select the gear to edit additional settings of the NIC. Select IPv4 from the menu options across the top.
     
     On the IPv4 tab select "Manual" (if not already selected) from the IPv4 Method. The netmask option can be filled in with dotted decimal (example: 255.255.255.0) or slash notation (/24). Do not forget to add the DNS servers. When done click on the "Apply" button in the upper right of the dialog box. The NIC should be active with new settings.
 
-17. In Ubuntu-GUI the settings will not be applied until the NIC is turned off and then back on. In the GUI turn the slider (light switch looking thing) to Off and then back to On. Reboot will work too but takes longer.
+20. In Ubuntu-GUI the settings will not be applied until the NIC is turned off and then back on. In the GUI turn the slider (light switch looking thing) to Off and then back to On. Reboot will work too but takes longer.
 
-18. In Linux GUI test connection to gateway by running: ```ping 100.70.MMM.B```
+21. In Linux GUI test connection to gateway by running: ```ping 100.70.MMM.B```
 
-19. Switch to Windows machine. Opening network settings is usually done by getting into the setting page. An icon has been added to the desktop of the Windows machine for quicker access. Open the "Network" icon from the desktop.
+22. Switch to Windows machine. Opening network settings is usually done by getting into the setting page. An icon has been added to the desktop of the Windows machine for quicker access. Open the "Network" icon from the desktop.
 
-20. There will be five (or more) entries on the list. Ethernet 5-8 and "Npcap Lookback Adapter". All, except Ethernet 5, have a red x next to them indicating they are not connected physically (sigh...well virtua-physically). You can rename the NIC if you like with the context menu.
+23. There will be five (or more) entries on the list. Ethernet 5-8 and "Npcap Lookback Adapter". All, except Ethernet 5, have a red x next to them indicating they are not connected physically (sigh...well virtua-physically). You can rename the NIC if you like with the context menu.
 
-21. Right-Click and select Properties at the bottom of the menu. This will open the properties of the NIC. From this child menu double-click on "Internet Protocol Version 4 (TCP/IPv4)". Opening yet another child window, sigh.
+24. Right-Click and select Properties at the bottom of the menu. This will open the properties of the NIC. From this child menu double-click on "Internet Protocol Version 4 (TCP/IPv4)". Opening yet another child window, sigh.
 
-22. Add DNS (aka nameservers) using the Advanced button at bottom and then in the DNS tab.
+25. Add DNS (aka nameservers) using the Advanced button at bottom and then in the DNS tab.
 
-23. Change both radio option to the lower choices (they will un-gray) and fill in the necessary info then click OK and both child windows.
+26. Change both radio option to the lower choices (they will un-gray) and fill in the necessary info then click OK and both child windows.
 
-24. In Ubuntu CLI configure the ens3 aka "Wired connection 1" using nmcli commands.
+27. In Ubuntu CLI configure the ens3 aka "Wired connection 1" using nmcli commands.
 Example:
 ```
 sudo nmcli general hostname **<PICK A HOSTNAME>**
@@ -167,19 +168,19 @@ sudo nmcli connection up "Wired connection 1"
 Q = Gateway IP
 Y = Network Number
 
-25. Make sure all GNS3 objects CAN ping their gateway.
+28. Make sure all GNS3 objects CAN ping their gateway.
 
 **If you are having problem at this point.... STOP! Put both hands on the plunger and ask for help (email, Teams)!**
 
 **(Google is your friend)**
 
-26. In Windows, start Wireshark, Ping to 8.8.8.8, stop the Wireshark capture.
+29. In Windows, start Wireshark, Ping to 8.8.8.8, stop the Wireshark capture.
 
-27. In Windows, start Wireshark capture, Ping to 8.8.8.8, stop the Wireshark capture. Think about why this does not work. What are the Wireshark messages telling you? Who is sending those error messages?
+30. In Windows, start Wireshark capture, Ping to 8.8.8.8, stop the Wireshark capture. Think about why this does not work. What are the Wireshark messages telling you? Who is sending those error messages?
 
 ### Static Route Configuration
 
-28. On VyOS-1, LAN2 is unknown! Currently, any traffic for LAN2 would go out the default route and be lost as there is no route BACK to LAN2. A static route will need to be configured on VyOS-1 to send LAN2 traffic to VyOS-2. eth2. In the example below, [underlined] portions will need to be replaced with table specific info. Look at earlier VyOS commands or the online guide for info too!
+31. On VyOS-1, LAN2 is unknown! Currently, any traffic for LAN2 would go out the default route and be lost as there is no route BACK to LAN2. A static route will need to be configured on VyOS-1 to send LAN2 traffic to VyOS-2. eth2. In the example below, [underlined] portions will need to be replaced with table specific info. Look at earlier VyOS commands or the online guide for info too!
 
 Syntax:
 ```
@@ -195,11 +196,11 @@ set protocols static route 100.70.MMM.Z/26 next-hop 100.70.MMM.Y
 This command on VyOS-1 will send all traffic for LAN2 to VyOS-2 eth1's IP (and address VyOS-1 **can** talk to). VyOS-2 is directly connected to LAN2 and will automatically route traffic to "directly connected"
 networks.
 
-29. In Windows, start Wireshark capture, Ping to 8.8.8.8, stop the Wireshark capture. Think about how the ping packets get being routed OUT and now the responses being routed BACK.
+32. In Windows, start Wireshark capture, Ping to 8.8.8.8, stop the Wireshark capture. Think about how the ping packets get being routed OUT and now the responses being routed BACK.
 
-30. In Windows, run traceroute -d www.ohio.edu Think about what the hops represent?
+33. In Windows, run traceroute -d www.ohio.edu Think about what the hops represent?
 
-31. All GNS objects should be able to ping 8.8.8.8
+34. All GNS objects should be able to ping 8.8.8.8
 
 **If you are having problem at this point.... STOP! Put both hands on the plunger and ask for help (email, Teams)!**
 
@@ -207,7 +208,7 @@ networks.
 
 ### Network Testing with Wireshark
 
-32. In Windows, for each of the following commands, start Wireshark, select correct NIC, run the command, stop Wireshark and save the capture file. Keeps notes for each command run and at what point
+35. In Windows, for each of the following commands, start Wireshark, select correct NIC, run the command, stop Wireshark and save the capture file. Keeps notes for each command run and at what point
 packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
 
     a.  netstat
@@ -222,7 +223,7 @@ packets were generated after the command was issued. **Some commands do may not 
 
     f.  tracert -d <Linux GUI IP>
 
-33. In the Linux GUI, for each of the following commands, start Wireshark, select correct NIC, run the command, stop Wireshark and save the capture file. Keeps notes for each command run and at what point packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
+36. In the Linux GUI, for each of the following commands, start Wireshark, select correct NIC, run the command, stop Wireshark and save the capture file. Keeps notes for each command run and at what point packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
 
     a.  ip route
 
@@ -238,7 +239,7 @@ packets were generated after the command was issued. **Some commands do may not 
 
     g.  traceroute -n <Windows IP>
 
-34. In the Linux CLI, for each of the following commands, start GNS3 Wireshark in the machines link, run the command, stop Wireshark and save the capture file. For help with Wireshark in GNS3 review the appropriate ECT Tech Nugget. Keeps notes for each command run and at what point packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
+37. In the Linux CLI, for each of the following commands, start GNS3 Wireshark in the machines link, run the command, stop Wireshark and save the capture file. For help with Wireshark in GNS3 review the appropriate ECT Tech Nugget. Keeps notes for each command run and at what point packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
 
     a.  ip route
 
