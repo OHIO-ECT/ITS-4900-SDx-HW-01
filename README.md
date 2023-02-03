@@ -141,7 +141,7 @@ B = IP address for gateway (VyOS-1 eth1)
 
 20. In Ubuntu-GUI the settings will not be applied until the NIC is turned off and then back on. In the GUI turn the slider (light switch looking thing) to Off and then back to On. Reboot will work too but takes longer.
 
-21. In Linux GUI test connection to gateway by running: ```ping 100.70.MMM.B```
+21. In Ubuntu-GUI test connection to gateway by running: ```ping 100.70.MMM.B```
 
 22. Switch to Windows machine. Opening network settings is usually done by getting into the setting page. An icon has been added to the desktop of the Windows machine for quicker access. Open the "Network" icon from the desktop.
 
@@ -220,9 +220,9 @@ packets were generated after the command was issued. **Some commands do may not 
 
     e.  tracert 8.8.8.8
 
-    f.  tracert -d <Linux GUI IP>
+    f.  tracert -d <Ubuntu-GUI IP>
 
-36. In the Linux GUI, for each of the following commands, start Wireshark, select correct NIC, run the command, stop Wireshark and save the capture file. Keeps notes for each command run and at what point packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
+36. In the Ubuntu-GUI, for each of the following commands, start Wireshark, select correct NIC, run the command, stop Wireshark and save the capture file. Keeps notes for each command run and at what point packets were generated after the command was issued. **Some commands do may not generate any network traffic!**
 
     a.  ip route
 
