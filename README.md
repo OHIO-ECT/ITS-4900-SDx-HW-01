@@ -135,8 +135,7 @@ B = IP address for gateway (VyOS-1 eth1)
 
 18. From VPCS-1 console test connection to gateway by running: ```ping 100.70.MMM.B```
 
-19. From Linux GUI setup the NIC. Click on the Connection Manager Icon ![](./images/image1.png) in the upper right corner of the screen. The "Network Connections" dialog will appear giving options
-    to configure ethernet interfaces (even disabled ones) on the machine. To edit the Ethernet (ens3) interface find the "Wired Settings" menu option. This will open the network settings options. Next to Ethernet (ens3) there are two options. A slider to turn the NIC off/on and a gear icon ![](./images/image2.png). Select the gear to edit additional settings of the NIC. Select IPv4 from the menu options across the top.
+19. From Ubuntu-GUI guest setup the NIC. (Do not edit your gHost's networking!) Click on the Connection Manager Icon ![](./images/image1.png) in the upper right corner of the screen. The "Network Connections" dialog will appear giving options to configure ethernet interfaces (even disabled ones) on the machine. To edit the Ethernet (ens3) interface find the "Wired Settings" menu option. This will open the network settings options. Next to Ethernet (ens3) there are two options. A slider to turn the NIC off/on and a gear icon ![](./images/image2.png). Select the gear to edit additional settings of the NIC. Select IPv4 from the menu options across the top.
     
     On the IPv4 tab select "Manual" (if not already selected) from the IPv4 Method. The netmask option can be filled in with dotted decimal (example: 255.255.255.0) or slash notation (/24). Do not forget to add the DNS servers. When done click on the "Apply" button in the upper right of the dialog box. The NIC should be active with new settings.
 
