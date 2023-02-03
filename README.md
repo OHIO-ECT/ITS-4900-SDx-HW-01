@@ -157,11 +157,11 @@ B = IP address for gateway (VyOS-1 eth1)
 27. In Ubuntu CLI configure the ens3 aka "Wired connection 1" using nmcli commands.
 Example:
 ```
-sudo nmcli general hostname **<PICK A HOSTNAME>**
-sudo nmcli con mod "Wired connection 1" ipv4.method manual
+sudo nmcli general hostname <PICK A HOSTNAME>
 sudo nmcli con mod "Wired connection" 1 ipv4.addresses 100.70.MMM.Y/26
 sudo nmcli con mod "Wired connection" 1 ipv4.gateway 100.70.MMM.Q
 sudo nmcli con mod "Wired connection" 1 ipv4.dns 132.235.9.75
+sudo nmcli con mod "Wired connection 1" ipv4.method manual
 sudo nmcli connection down "Wired connection 1"
 sudo nmcli connection up "Wired connection 1"
 ```
