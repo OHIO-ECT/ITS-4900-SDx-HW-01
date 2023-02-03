@@ -153,7 +153,7 @@ B = IP address for gateway (VyOS-1 eth1)
 
 26. Change both radio option to the lower choices (they will un-gray) and fill in the necessary info then click OK and both child windows.
 
-27. In Ubuntu CLI configure the ens3 aka "Wired connection 1" using nmcli commands.
+27. In Ubuntu-CLI configure the ens3 aka "Wired connection 1" using nmcli commands.
 Example:
 ```
 sudo nmcli general hostname <PICK A HOSTNAME>
