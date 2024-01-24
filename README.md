@@ -21,17 +21,17 @@
 -   Ohio University (OU), Domain Name Servers (DNS) are: 132.235.9.75
     and 132.235.200.41
 
--   On Blackboard each student has been issued a single static address in 132.235.160.192/26 network. Gateway follows class convention (ens192). **XXX** = Your personal 132.235.160.**XXX**/26 IP address.
+-   On Blackboard each student has been issued a single static address in 132.235.207.128/25 network. Gateway follows class convention (ens192). **XXX** = Your personal 132.235.207.**XXX**/26 IP address.
 
--   On Blackboard each student has been issued a (Pseudo-Public) network of 100.70.**MMM**.0/24. This network is routed to the 132.235.160.XXX address (ens192). **MMM** = assigned student number.
+-   On Blackboard each student has been issued a (Pseudo-Public) network of 100.70.**MMM**.0/24. This network is routed to the 132.235.207.XXX address (ens192). **MMM** = assigned student number.
 
 ### Pre-Lab
 
 -   Complete Subnetting Documentation and Network Diagram at end of Lab Writeup.  Use the following IP networks assignments
-    - WAN   - 132.235.160.192/26
+    - WAN   - 132.235.207.128/25
     - LAN 1 - 100.70.MMM.0/26
     - LAN 2 - 100.70.MMM.64/26
-    - LAN 3 - 100.70.MMM.254/28
+    - LAN 3 - 100.70.MMM.240/28
 
 -   Tech Nuggets to be reviewed:
 
@@ -76,7 +76,7 @@ WAN eth0 Example:
 
 ```
 set system host-name VyOS-1
-set interfaces ethernet eth0 address 132.235.160.XXX/26
+set interfaces ethernet eth0 address 132.235.207.XXX/25
 set interfaces ethernet eth0 description WAN
 ```
 
@@ -95,7 +95,7 @@ set interfaces ethernet eth2 description LAN3
 
 Example:
 ```
-set protocols static route 0.0.0.0/0 next-hop 132.235.160.254
+set protocols static route 0.0.0.0/0 next-hop 132.235.207.254
 ```
 7.  Add nameservers. This only needs to be done once per router. (They may already be configured).
 Example:
@@ -197,7 +197,7 @@ networks.
 
 32. In Windows, start Wireshark capture, Ping to 8.8.8.8, stop the Wireshark capture. Think about how the ping packets get being routed OUT and now the responses being routed BACK.
 
-33. In Windows, run traceroute -d www.ohio.edu Think about what the hops represent?
+33. In Windows, run tracert -d www.ohio.edu Think about what the hops represent?
 
 34. All GNS objects should be able to ping 8.8.8.8
 
